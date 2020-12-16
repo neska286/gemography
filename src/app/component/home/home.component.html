@@ -1,0 +1,41 @@
+<div class="container pt-5">
+    <div
+      class="search-results"
+      infiniteScroll
+      [infiniteScrollDistance]="2"
+      [infiniteScrollThrottle]="50"
+      (scrolled)="onScroll()"
+    >
+    <div class="row" *ngFor= "let repo of   allRepos ">
+     <div class="col-md-4 pt-3">
+        <div class="card" style="width: 18rem;">
+            <img [src]="repo.owner.avatar_url" class="card-img-top" alt="...">
+          </div>
+     </div>
+       <div class="col-md-8 pt-5">
+<h4>{{repo.name}}{{repo.id}}</h4>
+<p>{{repo.description}}</p>
+<div class="row">
+    <p class="background">Stars : {{repo.stargazers_count | displayNumber}} </p>
+    <p class="ml-3 background"> Issues :{{repo.open_issues | displayNumber}} </p>
+    <p class="ml-3 pt-2">Submitted 30 days ago by {{repo.full_name}}</p>
+
+</div>
+       </div>
+    </div>
+</div>
+<!-- Spinner-->
+<div class="row pb-5">
+    <div class="col-md-12 p-5">
+        <ngx-spinner
+  bdColor=""
+  size="default"
+  color="#fff"
+  type="ball-pulse-sync"
+  [fullScreen]= "false"
+>
+  <p style="font-size: 20px; color: black">Loading...</p>
+</ngx-spinner>
+    </div>
+</div>
+</div>
